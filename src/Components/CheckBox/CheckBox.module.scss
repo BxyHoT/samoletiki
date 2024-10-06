@@ -1,0 +1,29 @@
+.CheckBox {
+  display: flex;
+  margin: 0 -20px;
+  padding: 10px 20px;
+
+  &:hover {
+    background-color: rgba(241, 252, 255, 1);
+    cursor: url("../../assets/Cursor.svg"), auto;
+  }
+
+  & input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: rgba(241, 252, 255, 1);
+    }
+
+    &:checked {
+      background-color: rgba(241, 252, 255, 1);
+      background-image: url("../../assets/Shape.svg");
+    }
+  }
+
+  & span {
+    font-size: 13px;
+  }
+}
