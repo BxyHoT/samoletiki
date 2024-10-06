@@ -1,4 +1,4 @@
-.CheckBox {
+.CheckBoxWrapper {
   display: flex;
   margin: 0 -20px;
   padding: 10px 20px;
@@ -9,21 +9,49 @@
   }
 
   & input {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 0;
+    height: 0;
+    z-index: -1;
+    opacity: 0;
 
-    &:hover {
-      background-color: rgba(241, 252, 255, 1);
-    }
+    &:checked + .CheckBox {
+      border-color: rgba(33, 150, 243, 1);
 
-    &:checked {
-      background-color: rgba(241, 252, 255, 1);
-      background-image: url("../../assets/Shape.svg");
+      &::before {
+        transform: translate(-50%, -50%) scale(1);
+      }
     }
   }
 
   & span {
     font-size: 13px;
+  }
+}
+
+.CheckBox {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 2px;
+  border: 2px solid rgba(154, 187, 206, 1);
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 12px;
+    height: 8px;
+    display: inline-block;
+    background-color: rgba(241, 252, 255, 1);
+    background-image: url("../../assets/Shape.svg");
+    background-size: contain;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.1s ease;
+  }
+
+  &:hover {
+    background-color: rgba(241, 252, 255, 1);
   }
 }

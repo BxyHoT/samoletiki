@@ -6,8 +6,9 @@ interface ICheckBoxProp {
 
 export const CheckBox = ({ text }: ICheckBoxProp) => {
   return (
-    <label className={style.CheckBox}>
+    <label className={style.CheckBoxWrapper}>
       <input type="checkbox" />
+      <span className={style.CheckBox}></span>
       <span>{text}</span>
     </label>
   );
