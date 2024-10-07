@@ -1,15 +1,19 @@
 import { Row, Col } from "antd";
 import { Filter } from "../Filter/Filter";
 import { Tabs } from "../Tabs/Tabs";
+import { TicketList } from "../TicketList/TicketList";
+import { ShowMore } from "../ShowMore/ShowMore";
 
 export const Main = () => {
   return (
-    <Row gutter={20} justify="center">
-      <Col span={6}>
+    <Row justify="center">
+      <Col xs={20} sm={20} md={7} lg={6} xl={4}>
         <Filter />
       </Col>
-      <Col span={12}>
+      <Col xs={20} sm={20} md={12} lg={11} xl={8}>
         <Tabs />
+        <TicketList />
+        <ShowMore />
       </Col>
     </Row>
   );

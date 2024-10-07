@@ -34,8 +34,12 @@
   }
 }
 
-.checked {
+.Active {
   background-color: rgba(33, 150, 243, 1);
   border-color: rgba(33, 150, 243, 1);
   color: #fff;
+
+  &:hover {
+    background-color: rgba(33, 150, 243, 1);
+  }
 }
