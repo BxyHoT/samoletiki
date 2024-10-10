@@ -2,6 +2,10 @@
   display: flex;
   margin: 0 -20px;
   padding: 10px 20px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 
   &:hover {
     background-color: rgba(241, 252, 255, 1);
