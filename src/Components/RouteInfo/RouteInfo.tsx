@@ -1,22 +1,36 @@
 import style from "./RouteInfo.module.scss";
+import { ISegment } from "../../redux/slice/Api/Api";
+import { add } from "date-fns";
 
-export const RouteInfo = () => {
+interface IRouteInfoProps {
+  segments: ISegment;
+}
+
+export const RouteInfo = ({
+  segments: { origin, destination, date, stops, duration },
+}: IRouteInfoProps) => {
+  const formatTime = (minutes: number): string => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours}ч ${remainingMinutes}м`;
+  };
+
   return (
     <div className={style.RouteInfo}>
       <p>
-        <span>mow-hkt</span>
+        <span>{origin + " - " + destination}</span>
         <br />
         <span>10:45-08:00</span>
       </p>
       <p>
         <span>В пути</span>
         <br />
-        <span>21ч 15м</span>
+        <span>{formatTime(duration)}</span>
       </p>
       <p>
-        <span>2 пересадки</span>
+        <span>{stops.length} пересадки</span>
         <br />
-        <span>HKG,JNB</span>
+        <span>{stops.join(",")}</span>
       </p>
     </div>
   );

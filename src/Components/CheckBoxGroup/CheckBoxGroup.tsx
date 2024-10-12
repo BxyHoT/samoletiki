@@ -10,7 +10,7 @@ import { useAppSelector } from "../../redux/store";
 
 export const CheckBoxGroup = () => {
   const { all, noOne, one, two, three } = useAppSelector(
-    (state) => state.filter
+    ({ filter }) => filter
   );
   return (
     <>

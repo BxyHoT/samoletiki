@@ -2,3 +2,21 @@
   list-style: none;
   padding: 0;
 }
+
+.Loading,
+.Error {
+  margin-top: 50px;
+  text-align: center;
+
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.Error {
+  background-color: red;
+}
+
+.Loading {
+  background-color: rgb(33, 150, 243);
+  color: #fff;
+}

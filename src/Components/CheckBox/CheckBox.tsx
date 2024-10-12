@@ -25,7 +25,7 @@ export const CheckBox = ({ text, handler, isActive }: ICheckBoxProp) => {
     <label className={style.CheckBoxWrapper}>
       <input
         type="checkbox"
-        onClick={() => dispatch(handler())}
+        onChange={() => dispatch(handler())}
         checked={isActive}
       />
       <span className={style.CheckBox}></span>

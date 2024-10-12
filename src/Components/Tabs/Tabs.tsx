@@ -8,7 +8,7 @@ import { Tab } from "../Tab/Tab";
 import style from "./Tabs.module.scss";
 
 export const Tabs = () => {
-  const { cheapest, faster, optimal } = useAppSelector((state) => state.tab);
+  const { cheapest, faster, optimal } = useAppSelector(({ tab }) => tab);
 
   return (
     <form className={style.Tabs}>
