@@ -34,7 +34,7 @@ export const api = createApi({
     getSessionId: build.query<GetSessionIdDTO, void>({
       query: () => SEARCHID_URL,
     }),
-    getTickets: build.query<TicketsDTO, string>({
+    getTickets: build.query<TicketsDTO, string | undefined>({
       query: (searchId) => TICKETS_URL + searchId,
     }),
   }),

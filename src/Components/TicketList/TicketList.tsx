@@ -13,12 +13,14 @@ export const TicketList = () => {
     isError: ticketsError,
     isLoading: ticketsLoading,
     data: tickets,
-  } = useGetTicketsQuery(searchId!.searchId);
+  } = useGetTicketsQuery(searchId ? searchId.searchId : undefined, {
+    skip: !searchId,
+  });
 
-  if (isLoading && ticketsLoading) {
+  if (isLoading || ticketsLoading) {
     return <h1 className={style.Loading}>Loading...</h1>;
   }
-  if (isError && ticketsError) {
+  if (isError || ticketsError) {
     return <h1 className={style.Error}>Error</h1>;
   }
 
