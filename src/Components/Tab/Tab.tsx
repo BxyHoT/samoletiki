@@ -1,3 +1,4 @@
+import React from "react";
 import {
   setCheapest,
   setFaster,
@@ -11,7 +12,7 @@ interface ITabProp {
   isActive: boolean;
   handler: typeof setCheapest | typeof setFaster | typeof setOptimal;
 }
-export const Tab = ({ text, isActive, handler }: ITabProp) => {
+const Tab = ({ text, isActive, handler }: ITabProp) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -26,3 +27,5 @@ export const Tab = ({ text, isActive, handler }: ITabProp) => {
     </label>
   );
 };
+
+export default React.memo(Tab);

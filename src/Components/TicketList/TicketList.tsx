@@ -27,14 +27,16 @@ export const TicketList = () => {
   return (
     <>
       <ul className={style.TicketList}>
-        {tickets!.tickets.map((ticket) => {
-          return (
-            <Ticket
-              key={ticket.carrier + ticket.price + ticket.segments[0].date}
-              ticket={ticket}
-            />
-          );
-        })}
+        {tickets!.tickets
+          .map((ticket) => {
+            return (
+              <Ticket
+                key={ticket.carrier + ticket.price + ticket.segments[0].date}
+                ticket={ticket}
+              />
+            );
+          })
+          .slice(0, 5)}
       </ul>
       <ShowMore />
     </>

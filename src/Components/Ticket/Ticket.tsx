@@ -12,10 +12,14 @@ export const Ticket = ({
   const forth = segments[0];
   const back = segments[1];
 
+  const formatPrice = (price: number) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " ₽";
+  };
+
   return (
     <li className={styles.Ticket}>
       <div>
-        <h3>{price} P</h3>
+        <h3>{formatPrice(price)}</h3>
         <img src={`//pics.avs.io/99/36/${carrier}.png`} alt="Logo" />
       </div>
       <RouteInfo segments={forth} />

@@ -1,4 +1,4 @@
-import { CheckBox } from "../CheckBox/CheckBox";
+import CheckBox from "../CheckBox/CheckBox";
 import {
   setAll,
   setNoOne,

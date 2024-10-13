@@ -19,3 +19,15 @@ export const formatDate = (date: string, minutes: number) => {
   const back = add(new Date(date), { minutes: minutes });
   return forth + " - " + formatDateToHoursAndMinutes(back);
 };
+
+export const formatTransfer = (transferLength: number) => {
+  if (transferLength === 0) {
+    return "0 пересадок";
+  }
+
+  if (transferLength === 1) {
+    return "1 пересадка";
+  }
+
+  return "" + transferLength + " пересадки";
+};

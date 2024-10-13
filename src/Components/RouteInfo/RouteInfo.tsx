@@ -1,6 +1,6 @@
 import style from "./RouteInfo.module.scss";
 import { ISegment } from "../../redux/slice/Api/Api";
-import { formatTime, formatDate } from "./Func";
+import { formatTime, formatDate, formatTransfer } from "./Func";
 
 interface IRouteInfoProps {
   segments: ISegment;
@@ -22,7 +22,7 @@ export const RouteInfo = ({
         <span>{formatTime(duration)}</span>
       </p>
       <p>
-        <span>{stops.length} пересадки</span>
+        <span>{formatTransfer(stops.length)}</span>
         <br />
         <span>{stops.join(",")}</span>
       </p>

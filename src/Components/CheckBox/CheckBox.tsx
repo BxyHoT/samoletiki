@@ -7,6 +7,7 @@ import {
   setTwo,
   setThree,
 } from "../../redux/slice/filter/filter.slice";
+import React from "react";
 
 interface ICheckBoxProp {
   text: string;
@@ -19,8 +20,9 @@ interface ICheckBoxProp {
   isActive: boolean;
 }
 
-export const CheckBox = ({ text, handler, isActive }: ICheckBoxProp) => {
+const CheckBox = ({ text, handler, isActive }: ICheckBoxProp) => {
   const dispatch = useAppDispatch();
+
   return (
     <label className={style.CheckBoxWrapper}>
       <input
@@ -33,3 +35,5 @@ export const CheckBox = ({ text, handler, isActive }: ICheckBoxProp) => {
     </label>
   );
 };
+
+export default React.memo(CheckBox);

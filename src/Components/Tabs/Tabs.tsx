@@ -4,7 +4,7 @@ import {
   setOptimal,
 } from "../../redux/slice/tab/tab.slice";
 import { useAppSelector } from "../../redux/store";
-import { Tab } from "../Tab/Tab";
+import Tab from "../Tab/Tab";
 import style from "./Tabs.module.scss";
 
 export const Tabs = () => {

@@ -39,6 +39,7 @@
 }
 
 .Active {
+  transition: 0.2s ease;
   background-color: rgba(33, 150, 243, 1);
   border-color: rgba(33, 150, 243, 1);
   color: #fff;
