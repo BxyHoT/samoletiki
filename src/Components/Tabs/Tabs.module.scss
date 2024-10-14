@@ -4,4 +4,7 @@
   background-color: #fff;
   display: flex;
   flex-grow: 1;
+  @media (max-width: 560px) {
+    flex-direction: column;
+  }
 }

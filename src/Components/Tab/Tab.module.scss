@@ -23,11 +23,17 @@
   &:first-child {
     border-right: none;
     border-radius: 10px 0 0 10px;
+    @media (max-width: 560px) {
+      border-radius: 10px 10px 0 0;
+    }
   }
 
   &:last-child {
     border-left: none;
     border-radius: 0 10px 10px 0;
+    @media (max-width: 560px) {
+      border-radius: 0 0 10px 10px;
+    }
   }
 
   & input {
