@@ -9,7 +9,7 @@ export const Main = () => {
       <Col xs={20} sm={20} md={7} lg={6} xl={4}>
         <Filter />
       </Col>
-      <Col xs={20} sm={20} md={12} lg={11} xl={8}>
+      <Col xs={23} sm={20} md={12} lg={11} xl={8}>
         <Tabs />
         <TicketList />
       </Col>
