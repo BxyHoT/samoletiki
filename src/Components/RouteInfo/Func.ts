@@ -13,8 +13,8 @@ const formatDateToHoursAndMinutes = (date: Date) => {
 };
 
 export const formatDate = (date: string, minutes: number) => {
-  const hours = Math.floor(minutes / 60);
-  const remainingMinutes = minutes % 60;
+  const hours = String(Math.floor(minutes / 60)).padStart(2, "0");
+  const remainingMinutes = String(minutes % 60).padStart(2, "0");
   const forth = hours + ":" + remainingMinutes;
   const back = add(new Date(date), { minutes: minutes });
   return forth + " - " + formatDateToHoursAndMinutes(back);

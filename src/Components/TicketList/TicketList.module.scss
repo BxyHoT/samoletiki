@@ -4,7 +4,8 @@
 }
 
 .Loading,
-.Error {
+.Error,
+.NoResult {
   margin-top: 50px;
   text-align: center;
 
@@ -19,4 +20,26 @@
 .Loading {
   background-color: rgb(33, 150, 243);
   color: #fff;
+}
+
+.NoResult {
+  background-color: rgb(33, 150, 243);
+  color: #fff;
+}
+
+.img {
+  max-width: 100px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 50px;
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
