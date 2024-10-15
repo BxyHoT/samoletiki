@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+// const ANOTHER_URL = "https://front-test.dev.aviasales.ru/tickets";
+
 const BASE_URL = "https://aviasales-test-api.kata.academy/";
 const SEARCHID_URL = "search";
 const TICKETS_URL = "tickets?searchId=";

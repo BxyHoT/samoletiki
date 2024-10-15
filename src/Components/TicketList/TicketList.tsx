@@ -8,7 +8,7 @@ import { ShowMore } from "../ShowMore/ShowMore";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getTabFilter, getFilter } from "./Func";
 import img from "../../assets/rkn.jpg";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { setTickets } from "../../redux/slice/Tickets/tickets.slice";
 
 export const TicketList = () => {
@@ -22,6 +22,7 @@ export const TicketList = () => {
     isError: ticketsError,
     isLoading: ticketsLoading,
     data: ticketsData,
+    refetch: ticketsRefetch,
   } = useGetTicketsQuery(searchId ? searchId.searchId : undefined, {
     skip: !searchId,
   });
@@ -31,6 +32,10 @@ export const TicketList = () => {
 
     if (!ticketsLoading && ticketsData && !ticketsError) {
       dispatch(setTickets(ticketsData.tickets));
+
+      if (!ticketsData.stop) {
+        // setTimeout(ticketsRefetch, 10000);
+      }
     }
   }, [
     ticketsLoading,
@@ -42,9 +47,14 @@ export const TicketList = () => {
     filter.two,
     filter.three,
     dispatch,
+    ticketsRefetch,
   ]);
 
   const tickets = useAppSelector(({ tickets }) => tickets);
+
+  const filteredTikets = useMemo(() => {
+    return getFilter(filter, tickets).toSorted(getTabFilter(tabFilter));
+  }, [filter, tickets, tabFilter]);
 
   if (isLoading || ticketsLoading) {
     return (
@@ -62,10 +72,6 @@ export const TicketList = () => {
       </>
     );
   }
-
-  const filteredTikets = getFilter(filter, tickets).toSorted(
-    getTabFilter(tabFilter)
-  );
 
   const showMoreHandler = () => {
     setShowMore((showMore) => showMore + 5);
