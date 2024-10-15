@@ -10,7 +10,7 @@ export const getTabFilter = (tab: ITabState) => {
 
   if (tab.optimal) {
     return (a: ITicket, b: ITicket) =>
-      b.segments[0].duration / b.price - a.segments[0].duration / a.price;
+      a.price / a.segments[0].duration - b.price / b.segments[0].duration;
   }
 
   return (a: ITicket, b: ITicket) => a.price - b.price;

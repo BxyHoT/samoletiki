@@ -5,28 +5,46 @@ import {
   useGetTicketsQuery,
 } from "../../redux/slice/Api/Api";
 import { ShowMore } from "../ShowMore/ShowMore";
-import { useAppSelector } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { getTabFilter, getFilter } from "./Func";
 import img from "../../assets/rkn.jpg";
 import { useEffect, useState } from "react";
+import { setTickets } from "../../redux/slice/Tickets/tickets.slice";
 
 export const TicketList = () => {
   const { isLoading, isError, data: searchId } = useGetSessionIdQuery();
   const filter = useAppSelector(({ filter }) => filter);
   const tabFilter = useAppSelector(({ tab }) => tab);
   const [showMore, setShowMore] = useState(5);
-
-  useEffect(() => {
-    setShowMore(5);
-  }, [filter.all, filter.noOne, filter.one, filter.two, filter.three]);
+  const dispatch = useAppDispatch();
 
   const {
     isError: ticketsError,
     isLoading: ticketsLoading,
-    data: tickets,
+    data: ticketsData,
   } = useGetTicketsQuery(searchId ? searchId.searchId : undefined, {
     skip: !searchId,
   });
+
+  useEffect(() => {
+    setShowMore(5);
+
+    if (!ticketsLoading && ticketsData && !ticketsError) {
+      dispatch(setTickets(ticketsData.tickets));
+    }
+  }, [
+    ticketsLoading,
+    ticketsError,
+    ticketsData,
+    filter.all,
+    filter.noOne,
+    filter.one,
+    filter.two,
+    filter.three,
+    dispatch,
+  ]);
+
+  const tickets = useAppSelector(({ tickets }) => tickets);
 
   if (isLoading || ticketsLoading) {
     return (
@@ -45,7 +63,7 @@ export const TicketList = () => {
     );
   }
 
-  const filteredTikets = getFilter(filter, tickets!.tickets).toSorted(
+  const filteredTikets = getFilter(filter, tickets).toSorted(
     getTabFilter(tabFilter)
   );
 
@@ -63,7 +81,12 @@ export const TicketList = () => {
         {filteredTikets.slice(0, showMore).map((ticket) => {
           return (
             <Ticket
-              key={ticket.carrier + ticket.price + ticket.segments[0].date}
+              key={
+                ticket.carrier +
+                ticket.price +
+                ticket.segments[0].date +
+                ticket.segments[0].duration
+              }
               ticket={ticket}
             />
           );
