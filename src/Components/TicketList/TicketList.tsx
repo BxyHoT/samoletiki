@@ -1,5 +1,5 @@
 import style from "./TicketList.module.scss";
-import { Ticket } from "../Ticket/Ticket";
+import Ticket from "../Ticket/Ticket";
 import {
   useGetSessionIdQuery,
   useGetTicketsQuery,
@@ -27,14 +27,21 @@ export const TicketList = () => {
     skip: !searchId,
   });
 
+  const tickets = useAppSelector(({ tickets }) => tickets);
+
   useEffect(() => {
     setShowMore(5);
 
-    if (!ticketsLoading && ticketsData && !ticketsError) {
+    if (
+      !ticketsLoading &&
+      ticketsData &&
+      !ticketsError &&
+      ticketsData.tickets.length !== tickets.length
+    ) {
       dispatch(setTickets(ticketsData.tickets));
 
       if (!ticketsData.stop) {
-        // setTimeout(ticketsRefetch, 10000);
+        // setTimeout(ticketsRefetch, 30000);
       }
     }
   }, [
@@ -48,9 +55,8 @@ export const TicketList = () => {
     filter.three,
     dispatch,
     ticketsRefetch,
+    tickets.length,
   ]);
-
-  const tickets = useAppSelector(({ tickets }) => tickets);
 
   const filteredTikets = useMemo(() => {
     return getFilter(filter, tickets).toSorted(getTabFilter(tabFilter));

@@ -1,14 +1,13 @@
 import styles from "./Ticket.module.scss";
 import { RouteInfo } from "../RouteInfo/RouteInfo";
 import { ITicket } from "../../redux/slice/Api/Api";
+import { memo } from "react";
 
 interface ITicketProps {
   ticket: ITicket;
 }
 
-export const Ticket = ({
-  ticket: { price, segments, carrier },
-}: ITicketProps) => {
+const Ticket = ({ ticket: { price, segments, carrier } }: ITicketProps) => {
   const forth = segments[0];
   const back = segments[1];
 
@@ -27,3 +26,5 @@ export const Ticket = ({
     </li>
   );
 };
+
+export default memo(Ticket);
